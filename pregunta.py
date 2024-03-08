@@ -23,7 +23,7 @@ def clean_data():
         .str.replace("[,$]|(\.00$)", "", regex=True)
         .astype(float)
     )
-    df["barrio"] = df["barrio"].str.lower().replace("[_-]", " ", regex=True)
+
     # Limpieza de fecha_de_beneficio
     df["fecha_de_beneficio"] = pd.to_datetime(
         df["fecha_de_beneficio"], format="%d/%m/%Y", errors="coerce"
@@ -31,7 +31,7 @@ def clean_data():
         pd.to_datetime(df["fecha_de_beneficio"], format="%Y/%m/%d", errors="coerce")
     )
 
-    # Limpieza de comuna_ciudadano
+    # Cambio de tipo de dato de comuna_ciudadano
     df["comuna_ciudadano"] = df["comuna_ciudadano"].astype(int)
 
     # Eliminación de duplicados y valores nulos
